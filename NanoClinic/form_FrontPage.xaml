@@ -1,0 +1,137 @@
+﻿<Window x:Class="NanoClinic.form_FrontPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:NanoClinic"
+        mc:Ignorable="d"
+        Title="form_FrontPage"  Height="350" Width="550"
+        WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True"
+        WindowStyle="None" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/resources/icons.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+
+    <Border Background="#fff" CornerRadius="20">
+
+
+        <StackPanel Orientation="Horizontal">
+            <StackPanel  Width="275" HorizontalAlignment="Left" Height="300">
+
+                <Border BorderBrush="#c2c3c3" BorderThickness="0,0,1,0" >
+                    <StackPanel>
+
+                        <Image Source="/assets/front.jpg" Margin="0,-20,0,0"  Height="350" />
+
+                        <TextBlock Margin="0,-100,0,0" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="8" FontWeight="SemiBold" ><Run Text="Stay strong and live long."/><Run/><LineBreak/><Run FontSize="6" Foreground="#c2c3c3" Text="Live life…"/></TextBlock>
+
+                    </StackPanel>
+
+
+
+                </Border>
+
+
+
+            </StackPanel>
+            <StackPanel  Width="275" HorizontalAlignment="Right">
+
+                <Image  Margin="0,60,0,0" VerticalAlignment="Center"  Source="/assets/logo.png"   Height="100"/>
+                <TextBlock HorizontalAlignment="Center" Margin="0,115,0,0" VerticalAlignment="Bottom" FontSize="12"  FontFamily="Poppins" >
+                Loading..
+                </TextBlock>
+
+
+
+
+
+                <ProgressBar Height="5" Width="200"  Minimum="0" Maximum="100"  Margin="0,10,0,0" Name="pbstatus"  IsIndeterminate="True" Foreground="#337ab7"  >
+                    <ProgressBar.Style>
+                        <Style TargetType="ProgressBar"  >
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ProgressBar}">
+                                        <Grid x:Name="TemplateRoot">
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="Determinate"/>
+                                                    <VisualState x:Name="Indeterminate">
+                                                        <Storyboard RepeatBehavior="Forever" >
+                                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                                                <EasingDoubleKeyFrame KeyTime="0" Value="0.25"/>
+                                                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.25"/>
+                                                                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25"/>
+                                                            </DoubleAnimationUsingKeyFrames>
+                                                            <PointAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                                                <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5"/>
+                                                                <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5"/>
+                                                                <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5"/>
+                                                            </PointAnimationUsingKeyFrames>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <Border Background="{TemplateBinding Background}" CornerRadius="2" BorderThickness="{TemplateBinding BorderThickness}"/>
+                                            <Rectangle x:Name="PART_Track" RadiusX="20" RadiusY="20"/>
+                                            <Grid x:Name="PART_Indicator"  ClipToBounds="true" HorizontalAlignment="Left">
+                                                <Rectangle x:Name="Indicator" Fill="{TemplateBinding Foreground}" RadiusX="4"  RadiusY="4"/>
+                                                <Rectangle x:Name="Animation" Fill="{TemplateBinding Foreground}" RadiusX="4" RadiusY="4" ClipToBounds="True" RenderTransformOrigin="0.5,0.5">
+                                                    <Rectangle.RenderTransform>
+                                                        <TransformGroup>
+                                                            <ScaleTransform/>
+                                                            <SkewTransform/>
+                                                            <RotateTransform/>
+                                                            <TranslateTransform/>
+                                                        </TransformGroup>
+                                                    </Rectangle.RenderTransform>
+                                                </Rectangle>
+                                            </Grid>
+                                        </Grid>
+                                        <ControlTemplate.Triggers >
+                                            <Trigger Property="Orientation" Value="Vertical">
+                                                <Setter Property="LayoutTransform" TargetName="TemplateRoot">
+                                                    <Setter.Value>
+                                                        <RotateTransform Angle="-90"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Trigger>
+                                            <Trigger Property="IsIndeterminate" Value="true">
+                                                <Setter Property="Visibility"  TargetName="Indicator" Value="Collapsed"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ProgressBar.Style>
+
+                </ProgressBar>
+
+
+
+                <TextBlock HorizontalAlignment="Center" FontSize="6" Margin="0,5,0,0" FontFamily="Poppins">
+                Copyright © Nano Clinic
+                </TextBlock>
+
+
+            </StackPanel>
+
+
+
+        </StackPanel>
+        
+
+
+    </Border>
+</Window>

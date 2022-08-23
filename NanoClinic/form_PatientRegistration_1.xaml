@@ -1,0 +1,317 @@
+﻿<Window xmlns:customcontrols="clr-namespace:DriveStorage.customcontrols"
+        x:Class="NanoClinic.form_PatientRegistration_1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:NanoClinic"
+        mc:Ignorable="d"
+        Title="form_PatientRegistration_1" Height="800" Width="1438"
+        WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True"
+        WindowStyle="None" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/resources/icons.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Border CornerRadius="20" Background="White" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Registration"  Foreground="#337ab7" Margin="38,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold"/>
+
+            <materialDesign:DialogHost>
+                <materialDesign:PopupBox  Foreground="#337ab7" HorizontalAlignment="Right" Margin="0 20 45 0"
+                 PlacementMode="BottomAndAlignRightEdges" StaysOpen="False"
+                 Height="25">
+                    <StackPanel Width="125">
+                        <Button x:Name="btn_exit" ToolTip="Shut down Application" Margin="0 4 0 0" Content="Exit  Application" Click="btn_exit_Click"/>
+                        <Button x:Name="btn_logout" ToolTip="Logout Application" Content="Logout" Click="btn_logout_Click" />
+
+                    </StackPanel>
+
+                </materialDesign:PopupBox>
+            </materialDesign:DialogHost>
+
+            <Grid Grid.Row="1">
+                <TextBlock Text="Patient Information"  FontWeight="ExtraLight" FontSize="24" Margin="65,0,0,0"   />
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="65,0,0,0">
+
+                    <Border  Height="500" Width="600" CornerRadius="12"  BorderBrush="#C2C3C3" BorderThickness="1" Margin="0,0,45,0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0" Width="175">
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0">
+                                        <TextBlock Text="Title:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <TextBlock Text="First Name:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                    </Grid>
+                                    <Grid Grid.Row="2">
+                                        <TextBlock Text="DOB:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                    </Grid>
+                                    <Grid Grid.Row="3">
+                                        <TextBlock Text="Age:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                    </Grid>
+                                    <Grid Grid.Row="4">
+                                        <TextBlock Text="Address:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                    </Grid>
+                                    <Grid Grid.Row="5">
+                                        <TextBlock Text="E-mail Address:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                    </Grid>
+
+
+
+
+                                </Grid>
+
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Width="375" VerticalAlignment="Center">
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0">
+                                        <ComboBox Background="White" Cursor="Hand"  x:Name="cmb_title" Width="315" FontSize="14"
+                          materialDesign:HintAssist.Hint="Please select the title" BorderThickness="1"  FontWeight="SemiBold"
+                          BorderBrush="#C2C3C3" Style="{StaticResource MaterialDesignOutlinedComboBox}" PreviewMouseLeftButtonDown="cmb_title_PreviewMouseLeftButtonDown" >
+                                            <ComboBoxItem Content="Mr"/>
+                                            <Separator/>
+                                            <ComboBoxItem Content="Mrs"/>
+                                            <Separator/>
+                                            <ComboBoxItem Content="Ms"/>
+                                            <Separator/>
+                                            <ComboBoxItem Content="Prof"/>
+                                            <Separator/>
+                                            <ComboBoxItem Content="Rev"/>
+                                            <Separator/>
+                                            <ComboBoxItem Content="Dr"/>
+                                        </ComboBox>
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <StackPanel x:Name="error_cmb"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-5,0,0" Width="315" Height="20">
+                                            <Rectangle  Fill="#ff3333" Width="5" />
+
+                                            <TextBlock x:Name="txt_error_cmb" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                        <TextBox Padding="10,0,0,0"  FontWeight="SemiBold"  x:Name="txt_patient_firstname" BorderThickness="1" materialDesign:TextFieldAssist.TextFieldCornerRadius="8"  BorderBrush="#C2C3C3" FontSize="12" Height="35" Width="315" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam" PreviewMouseLeftButtonDown="txt_patient_firstname_PreviewMouseLeftButtonDown"/>
+
+                                    </Grid>
+                                    <Grid Grid.Row="2">
+                                        <StackPanel x:Name="error_first"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-5,0,0" Width="315" Height="20">
+                                            <Rectangle  Fill="#ff3333" Width="5" />
+
+                                            <TextBlock x:Name="txt_error_first" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/> 
+                                        </StackPanel>
+                                        <DatePicker Padding="10,0,0,0"  FontWeight="SemiBold" IsTodayHighlighted="True"  x:Name="patient_dob_date_picker" materialDesign:HintAssist.Hint="Date of birth"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="315" Height="35" BorderBrush="#C2C3C3" BorderThickness="1" SelectedDateFormat="Short" DisplayDateStart="1922-03-20"  SelectedDateChanged="patient_dob_date_picker_SelectedDateChanged" PreviewMouseLeftButtonDown="patient_dob_date_picker_PreviewMouseLeftButtonDown"/>
+                                        
+                                    </Grid>
+                                    <Grid Grid.Row="3">
+                                        <StackPanel x:Name="error_dob"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-5,0,0" Width="315" Height="20">
+                                            <Rectangle  Fill="#ff3333" Width="5" />
+
+                                            <TextBlock x:Name="txt_error_dob" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                        <TextBox Padding="10,0,0,0"  FontWeight="SemiBold" x:Name="txt_patient_age" IsReadOnly="True" BorderThickness="1" materialDesign:TextFieldAssist.TextFieldCornerRadius="8"  BorderBrush="#C2C3C3" FontSize="12" Height="35" Width="315" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam" PreviewMouseLeftButtonDown="txt_patient_age_PreviewMouseLeftButtonDown"/>
+
+
+                                    </Grid>
+                                    <Grid Grid.Row="4">
+                                        <StackPanel x:Name="error_age"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-5,0,0" Width="315" Height="20">
+                                            <Rectangle  Fill="#ff3333" Width="5" />
+
+                                            <TextBlock x:Name="txt_error_age" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                        <TextBox Padding="10,0,0,0"  FontWeight="SemiBold" x:Name="txt_patient_address" BorderThickness="1" materialDesign:TextFieldAssist.TextFieldCornerRadius="8"  BorderBrush="#C2C3C3" FontSize="12" Height="35" Width="315" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam" PreviewMouseLeftButtonDown="txt_patient_address_PreviewMouseLeftButtonDown"/>
+                                    </Grid>
+                                    <Grid Grid.Row="5">
+                                        <StackPanel x:Name="error_address"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-5,0,0" Width="315" Height="20">
+                                            <Rectangle  Fill="#ff3333" Width="5" />
+
+                                            <TextBlock x:Name="txt_error_address" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                        <TextBox Padding="10,0,0,0"  FontWeight="SemiBold" x:Name="txt_patient_email" BorderThickness="1" materialDesign:TextFieldAssist.TextFieldCornerRadius="8"  BorderBrush="#C2C3C3" FontSize="12" Height="35" Width="315" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam" PreviewMouseLeftButtonDown="txt_patient_email_PreviewMouseLeftButtonDown"/>
+                                        <StackPanel x:Name="error_email"  Orientation="Horizontal" VerticalAlignment="Bottom" Margin="0,0,0,-15" Width="315" Height="20">
+                                            <Rectangle  Fill="#ff3333" Width="5" />
+
+                                            <TextBlock x:Name="txt_error_email" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+
+
+                            </StackPanel>
+
+                        </StackPanel>
+
+                    </Border>
+
+                    <Border  Height="500" Width="675" CornerRadius="12" BorderBrush="#C2C3C3" BorderThickness="1" Margin="0,0,45,0">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel VerticalAlignment="Center">
+                                <StackPanel Orientation="Vertical" Width="175" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0" >
+                                    <Grid  >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+
+
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="NIC:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <TextBlock Text="Last Name:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                        </Grid>
+                                        <Grid Grid.Row="2">
+                                            <TextBlock Text="Gender:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                        </Grid>
+                                        <Grid Grid.Row="3">
+                                            <TextBlock Text="Civil Status:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                        </Grid>
+                                        <Grid Grid.Row="4">
+                                            <TextBlock Text="Mobile:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                        </Grid>
+                                        <Grid Grid.Row="5">
+                                            <TextBlock  Text="Land Phone:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                        </Grid>
+                                    </Grid>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel VerticalAlignment="Center">
+                                <StackPanel Orientation="Vertical" Width="375" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0" >
+                                    <Grid  >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+
+
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            
+                                            <TextBox Padding="10,0,0,0" FontWeight="SemiBold"  x:Name="txt_patient_nic" BorderThickness="1" materialDesign:TextFieldAssist.TextFieldCornerRadius="8"  BorderBrush="#C2C3C3" FontSize="12" Height="35" Width="315" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam" PreviewMouseLeftButtonDown="txt_patient_nic_PreviewMouseLeftButtonDown"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel x:Name="error_nic"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-10,0,0" Width="315" Height="20">
+                                                <Rectangle  Fill="#ff3333" Width="5" />
+
+                                                <TextBlock x:Name="txt_error_nic" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                            <TextBox Padding="10,0,0,0" FontWeight="SemiBold"  x:Name="txt_patient_lastname" BorderThickness="1" materialDesign:TextFieldAssist.TextFieldCornerRadius="8"  BorderBrush="#C2C3C3" FontSize="12" Height="35" Width="315" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam" PreviewMouseLeftButtonDown="txt_patient_lastname_PreviewMouseLeftButtonDown"/>
+                                        </Grid>
+                                        <Grid Grid.Row="2">
+                                            <StackPanel x:Name="error_lastname"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-10,0,0" Width="315" Height="20">
+                                                <Rectangle  Fill="#ff3333" Width="5" />
+
+                                                <TextBlock x:Name="txt_error_lastname" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <RadioButton  x:Name="rdio_Patientgender_male" VerticalAlignment="Center" GroupName="PatientGender" Margin="30,0,10,0" IsChecked="True" BorderBrush="#c2c3c3" BorderThickness="1" Cursor="Hand" PreviewMouseLeftButtonDown="rdio_Patientgender_male_PreviewMouseLeftButtonDown"/>
+                                                    <TextBlock Text="Male" VerticalAlignment="Center" FontWeight="ExtraLight" FontSize="15" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <RadioButton Height="20" Width="20" x:Name="rdio_Patientgender_female" VerticalAlignment="Center" GroupName="PatientGender" Margin="30,0,10,0"  BorderBrush="#c2c3c3" BorderThickness="1" Cursor="Hand" PreviewMouseLeftButtonDown="rdio_Patientgender_female_PreviewMouseLeftButtonDown"/>
+                                                    <TextBlock Text="Female" VerticalAlignment="Center" FontWeight="ExtraLight" FontSize="15" />
+                                                </StackPanel>
+                                                
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid Grid.Row="3">
+                                            <StackPanel x:Name="error_gender"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-10,0,0" Width="315" Height="20">
+                                                <Rectangle  Fill="#ff3333" Width="5" />
+
+                                                <TextBlock x:Name="txt_error_gender" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <RadioButton x:Name="rdio_Patientcivilstatus_married" VerticalAlignment="Center" GroupName="PatientCivilStatus" Margin="30,0,10,0" IsChecked="True" BorderBrush="#c2c3c3" BorderThickness="1" Cursor="Hand" Height="20" Width="20" PreviewMouseLeftButtonDown="rdio_Patientcivilstatus_married_PreviewMouseLeftButtonDown"/>
+                                                    <TextBlock Text="Married" VerticalAlignment="Center" FontWeight="ExtraLight" FontSize="15" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <RadioButton x:Name="rdio_Patientcivilstatus_unmarried" VerticalAlignment="Center" GroupName="PatientCivilStatus" Height="20" Width="20" Margin="30,0,10,0"  BorderBrush="#c2c3c3" BorderThickness="1" Cursor="Hand" PreviewMouseLeftButtonDown="rdio_Patientcivilstatus_unmarried_PreviewMouseLeftButtonDown"/>
+                                                    <TextBlock Text="Unmarried" VerticalAlignment="Center" FontWeight="ExtraLight" FontSize="15" />
+                                                </StackPanel>
+
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid Grid.Row="4">
+                                            <StackPanel x:Name="error_civilstatus"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-10,0,0" Width="315" Height="20">
+                                                <Rectangle  Fill="#ff3333" Width="5" />
+
+                                                <TextBlock x:Name="txt_error_civilstatus" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                            <TextBox Padding="10,0,0,0"  FontWeight="SemiBold" x:Name="txt_patient_mobile" BorderThickness="1" materialDesign:TextFieldAssist.TextFieldCornerRadius="8"  BorderBrush="#C2C3C3" FontSize="12" Height="35" Width="315" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam" PreviewMouseLeftButtonDown="txt_patient_mobile_PreviewMouseLeftButtonDown"/>
+                                        </Grid>
+                                        <Grid Grid.Row="5">
+                                            <StackPanel x:Name="error_mobile"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-10,0,0" Width="315" Height="20">
+                                                <Rectangle  Fill="#ff3333" Width="5" />
+
+                                                <TextBlock x:Name="txt_error_mobile" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                            <TextBox Padding="10,0,0,0"  FontWeight="SemiBold" x:Name="txt_patient_landphone" BorderThickness="1" materialDesign:TextFieldAssist.TextFieldCornerRadius="8"  BorderBrush="#C2C3C3" FontSize="12" Height="35" Width="315" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+                                        </Grid>
+                                        
+
+                                    </Grid>
+                                    <StackPanel x:Name="error_land"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-10,0,0" Width="315" Height="20">
+                                        <Rectangle  Fill="#ff3333" Width="5" />
+
+                                        <TextBlock x:Name="txt_error_land" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2">
+
+                <Button Background="#fff" BorderThickness="1" BorderBrush="#C2C3C3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="65,0" x:Name="btn_clearall" Style="{StaticResource MaterialDesignFlatButton}" FontFamily="Arial Rounded MT Bold" materialDesign:ShadowAssist.ShadowDepth="Depth4" Height="30" Width="90" Foreground="#337ab7"
+                 materialDesign:ButtonAssist.CornerRadius="5" FontSize="12" Content="Clear All" Click="btn_clearall_Click" />
+                <Button Background="#fff" BorderThickness="1" BorderBrush="#C2C3C3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,55,0" x:Name="btn_next" Style="{StaticResource MaterialDesignFlatButton}" FontFamily="Arial Rounded MT Bold" materialDesign:ShadowAssist.ShadowDepth="Depth4" Height="30" Width="90" Foreground="#337ab7"
+                 materialDesign:ButtonAssist.CornerRadius="5" FontSize="12" Content="Next" Click="btn_next_Click" />
+
+                <Button Background="#fff" BorderThickness="1" BorderBrush="#C2C3C3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,175,0" x:Name="btn_back" Style="{StaticResource MaterialDesignFlatButton}" FontFamily="Arial Rounded MT Bold" materialDesign:ShadowAssist.ShadowDepth="Depth4" Height="30" Width="90" Foreground="#337ab7"
+                 materialDesign:ButtonAssist.CornerRadius="5" FontSize="12" Content="Back" Click="btn_back_Click" />
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

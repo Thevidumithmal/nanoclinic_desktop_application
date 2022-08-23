@@ -1,0 +1,475 @@
+﻿<Window xmlns:customcontrols="clr-namespace:DriveStorage.customcontrols" 
+        x:Class="NanoClinic.form_PatientMakeAppointments"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:NanoClinic"
+        mc:Ignorable="d"
+        Title="form_PatientMakeAppointments"  Height="800" Width="1438"
+        WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True"
+        WindowStyle="None" ResizeMode="NoResize" Loaded="Window_Loaded" >
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/resources/icons.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Border CornerRadius="20" Background="White" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Make Appointments"  Foreground="#337ab7" Margin="38,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold"/>
+
+            <materialDesign:DialogHost>
+                <materialDesign:PopupBox  Foreground="#337ab7" HorizontalAlignment="Right" Margin="0 20 45 0"
+                 PlacementMode="BottomAndAlignRightEdges" StaysOpen="False"
+                 Height="25">
+                    <StackPanel Width="125">
+                        <Button x:Name="btn_exit" ToolTip="Shut down Application" Margin="0 4 0 0" Content="Exit  Application" Click="btn_exit_Click"/>
+                        <Button x:Name="btn_logout" ToolTip="Logout Application" Content="Logout" Click="btn_logout_Click" />
+
+                    </StackPanel>
+
+                </materialDesign:PopupBox>
+            </materialDesign:DialogHost>
+
+            <Grid Grid.Row="1">
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="65,0,0,0">
+
+
+                    <Border   Height="620" Width="600" CornerRadius="12"  VerticalAlignment="Center" BorderBrush="#C2C3C3" BorderThickness="1" Margin="0,0,45,0">
+
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  VerticalAlignment="Center">
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0" Width="175">
+                                    <Grid >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Specialization:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,21,0,20.6" FontSize="18" FontWeight="ExtraLight"/>
+
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <TextBlock Text="Doctor Id:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                        </Grid>
+                                        <Grid Grid.Row="2">
+                                            <TextBlock Text="Time Slot:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                        </Grid>
+                                        <Grid Grid.Row="3">
+                                            <TextBlock Text="Patient Name:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                        </Grid>
+                                        <Grid Grid.Row="4">
+                                            <TextBlock Text="Date:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                        </Grid>
+
+
+
+
+                                    </Grid>
+
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Width="300" VerticalAlignment="Top">
+                                    <Grid >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                            <RowDefinition Height="75"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0">
+                                            <ComboBox Background="White" Cursor="Hand"  x:Name="cmb_appointment_spec" Width="280" FontSize="14"
+                          materialDesign:HintAssist.Hint="Please select the category" BorderThickness="1"  FontWeight="SemiBold"
+                          BorderBrush="#C2C3C3" Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="cmb_appointment_spec_SelectionChanged" PreviewMouseLeftButtonDown="cmb_appointment_spec_PreviewMouseLeftButtonDown" >
+                                                <ComboBoxItem Content="Neurology"/>
+                                                <Separator/>
+                                                <ComboBoxItem Content="Cardiology"/>
+                                                <Separator/>
+                                                <ComboBoxItem Content="Surgeon"/>
+                                                <Separator/>
+                                                <ComboBoxItem Content="Pediatrics"/>
+                                                <Separator/>
+                                                <ComboBoxItem Content="Physician"/>
+                                                
+                                            </ComboBox>
+
+
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel x:Name="error_cmb_spec"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-10,0,0" Width="280" Height="18">
+                                                <Rectangle  Fill="#ff3333" Width="5" />
+
+                                                <TextBlock x:Name="txt_error_cmb_spec" Background="#fce5cd" VerticalAlignment="Top" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,0"   HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                            <ComboBox Background="White" Cursor="Hand"  x:Name="cmb_appointment_doc" Width="280" FontSize="14"
+                          materialDesign:HintAssist.Hint="Please select a doctor" BorderThickness="1"  FontWeight="SemiBold"
+                          BorderBrush="#C2C3C3" Style="{StaticResource MaterialDesignOutlinedComboBox}" PreviewMouseLeftButtonDown="cmb_appointment_doc_PreviewMouseLeftButtonDown" >
+                                                
+                                            </ComboBox>
+                                        </Grid>
+                                        <Grid Grid.Row="2">
+                                            <StackPanel x:Name="error_cmb_doc"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-10,0,0" Width="280" Height="18">
+                                                <Rectangle  Fill="#ff3333" Width="5" />
+
+                                                <TextBlock x:Name="txt_error_cmb_doc" Background="#fce5cd" VerticalAlignment="Top" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,0"   HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                            <ComboBox Background="White" Cursor="Hand"  x:Name="cmb_ppointment_time_slot" Width="280" FontSize="14"
+                          materialDesign:HintAssist.Hint="Please select the category" BorderThickness="1"  FontWeight="SemiBold"
+                          BorderBrush="#C2C3C3" Style="{StaticResource MaterialDesignOutlinedComboBox}" PreviewMouseLeftButtonDown="cmb_ppointment_time_slot_PreviewMouseLeftButtonDown"   >
+                                                <ComboBoxItem Content="07.00am - 10.00am"/>
+                                                <Separator/>
+                                                <ComboBoxItem Content="11.00am - 14.00pm"/>
+                                                <Separator/>
+                                                <ComboBoxItem Content="15.00pm - 18.00pm"/>
+                                                <Separator/>
+                                                <ComboBoxItem Content="19.00pm - 22.00pm"/>
+
+                                            </ComboBox>
+
+
+                                        </Grid>
+                                        <Grid Grid.Row="3">
+                                            <StackPanel x:Name="error_cmb_slot"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-10,0,0" Width="280" Height="18">
+                                                <Rectangle  Fill="#ff3333" Width="5" />
+
+                                                <TextBlock x:Name="txt_error_cmb_slot" Background="#fce5cd" VerticalAlignment="Top" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,0"   HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                            
+                                            <TextBox Padding="10,0,0,0" Text="" IsReadOnly="False" FontWeight="SemiBold"  x:Name="txt_make_appointments_name" BorderThickness="1" materialDesign:TextFieldAssist.TextFieldCornerRadius="8"  BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="280" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam" PreviewMouseLeftButtonDown="txt_make_appointments_name_PreviewMouseLeftButtonDown"/>
+
+                                        </Grid>
+                                        
+                                        <Grid Grid.Row="4">
+                                            <StackPanel x:Name="error_name"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-15,0,0" Width="280" Height="18">
+                                                <Rectangle  Fill="#ff3333" Width="5" />
+
+                                                <TextBlock x:Name="txt_error_name" Background="#fce5cd" VerticalAlignment="Top" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,0"   HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                            <DatePicker Padding="10,0,0,0"  FontWeight="SemiBold" IsTodayHighlighted="True"  x:Name="patinet_appointmentdate_picker" materialDesign:HintAssist.Hint="Appointment date"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="280" Height="30" BorderBrush="#C2C3C3" BorderThickness="1" SelectedDateFormat="Short" DisplayDateStart="1922-03-20" PreviewMouseLeftButtonDown="patinet_appointmentdate_picker_PreviewMouseLeftButtonDown"  />
+
+                                        </Grid>
+                                       
+
+                                    </Grid>
+                                    <StackPanel x:Name="error_date"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-15,0,0" Width="280" Height="18">
+                                        <Rectangle  Fill="#ff3333" Width="5" />
+
+                                        <TextBlock x:Name="txt_error_date" Background="#fce5cd" VerticalAlignment="Top" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,0"   HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+
+
+                            </StackPanel>
+                            
+
+                            
+                            
+                            
+                            
+                        </StackPanel>
+
+                        
+                        
+                        
+
+                    </Border>
+                    
+
+                    <Border  Height="620" Width="675" CornerRadius="12" BorderBrush="#C2C3C3" BorderThickness="1" Margin="0,0,45,0">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <StackPanel Margin="15,0,0,0" Orientation="Horizontal" VerticalAlignment="Center" Height="200">
+                                <Border Margin="0,0,15,0"   CornerRadius="20" Width="165" Height="165" HorizontalAlignment="Left" Background="Transparent" BorderThickness="1" BorderBrush="#337ab7">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0" HorizontalAlignment="Left" Margin="0,0,0,0.4" Width="163">
+
+                                            <TextBlock Text="Schedule 01" x:Name="appointment_1_head" FontFamily="Arial Rounded MT Bold" FontSize="16" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_1_name" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_1_cat" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_1_date" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_1_time" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+
+
+                                            </StackPanel>
+
+
+                                        </Grid>
+
+                                        
+                                    </Grid>
+
+
+
+                                </Border>
+                                <Border Margin="0,0,15,0"   CornerRadius="20" Width="165" Height="165" HorizontalAlignment="Center" Background="Transparent" BorderThickness="1" BorderBrush="#337ab7">
+
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Schedule 02" x:Name="appointment_2_head" FontFamily="Arial Rounded MT Bold" FontSize="16" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_2_name" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_2_cat" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_2_date" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_2_time" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+
+
+                                </Border>
+                                <Border   CornerRadius="20" Width="165" Height="165" HorizontalAlignment="Right" Background="Transparent" BorderThickness="1" BorderBrush="#337ab7">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Schedule 03" x:Name="appointment_3_head" FontFamily="Arial Rounded MT Bold" FontSize="16" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_3_name" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_3_cat" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_3_date" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_3_time" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+
+
+
+
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Margin="15,0,0,0" Orientation="Horizontal" VerticalAlignment="Center" Height="200">
+                                <Border Margin="0,0,15,0"   CornerRadius="20" Width="165" Height="165" HorizontalAlignment="Left" Background="Transparent" BorderThickness="1" BorderBrush="#337ab7">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Schedule 04" x:Name="appointment_4_head" FontFamily="Arial Rounded MT Bold" FontSize="16" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_4_name" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_4_cat" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_4_date" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_4_time" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+
+
+
+                                </Border>
+                                <Border Margin="0,0,15,0"   CornerRadius="20" Width="165" Height="165" HorizontalAlignment="Center" Background="Transparent" BorderThickness="1" BorderBrush="#337ab7">
+
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Schedule 05" x:Name="appointment_5_head" FontFamily="Arial Rounded MT Bold" FontSize="16" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_5_name" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_5_cat" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_5_date" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_5_time" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+
+
+                                </Border>
+                                <Border   CornerRadius="20" Width="165" Height="165" HorizontalAlignment="Right" Background="Transparent" BorderThickness="1" BorderBrush="#337ab7">
+
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Schedule 06" x:Name="appointment_6_head" FontFamily="Arial Rounded MT Bold" FontSize="16" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_6_name" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_6_cat" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_6_date" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_6_time" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+
+
+                                </Border>
+                            </StackPanel>
+
+
+
+                            <StackPanel Margin="15,0,0,0" Orientation="Horizontal" VerticalAlignment="Center" Height="200">
+                                <Border Margin="0,0,15,0"   CornerRadius="20" Width="165" Height="165" HorizontalAlignment="Left" Background="Transparent" BorderThickness="1" BorderBrush="#337ab7">
+
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Schedule 07" x:Name="appointment_7_head" FontFamily="Arial Rounded MT Bold" FontSize="16" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_7_name" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_7_cat" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_7_date" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_7_time" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+
+
+                                </Border>
+                                <Border Margin="0,0,15,0"   CornerRadius="20" Width="165" Height="165" HorizontalAlignment="Center" Background="Transparent" BorderThickness="1" BorderBrush="#337ab7">
+
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Schedule 08" x:Name="appointment_8_head" FontFamily="Arial Rounded MT Bold" FontSize="16" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_8_name" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_8_cat" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_8_date" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_8_time" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+
+
+                                </Border>
+                                <Border   CornerRadius="20" Width="165" Height="165" HorizontalAlignment="Right" Background="Transparent" BorderThickness="1" BorderBrush="#337ab7">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Schedule 09" x:Name="appointment_9_head" FontFamily="Arial Rounded MT Bold" FontSize="16" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_9_name" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_9_cat" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_9_date" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""   VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="appointment_9_time" TextWrapping="Wrap" Width="150" BorderThickness="0" Height="30" FontSize="12" Text=""  VerticalAlignment="Center" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+
+
+
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+
+
+                    </Border>
+
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2">
+
+                <Button Background="#fff" BorderThickness="1" BorderBrush="#C2C3C3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="65,0" x:Name="btn_clearall" Style="{StaticResource MaterialDesignFlatButton}" FontFamily="Arial Rounded MT Bold" materialDesign:ShadowAssist.ShadowDepth="Depth4" Height="30" Width="90" Foreground="#337ab7"
+                 materialDesign:ButtonAssist.CornerRadius="5" FontSize="12" Content="Clear All" Click="btn_clearall_Click_1"   />
+                <Button Background="#fff" BorderThickness="1" BorderBrush="#C2C3C3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,55,0" x:Name="btn_create" Style="{StaticResource MaterialDesignFlatButton}" FontFamily="Arial Rounded MT Bold" materialDesign:ShadowAssist.ShadowDepth="Depth4" Height="30" Width="90" Foreground="#337ab7"
+                 materialDesign:ButtonAssist.CornerRadius="5" FontSize="12" Content="Create" Click="btn_create_Click"  />
+
+                <Button Background="#fff" BorderThickness="1" BorderBrush="#C2C3C3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,175,0" x:Name="btn_back" Style="{StaticResource MaterialDesignFlatButton}" FontFamily="Arial Rounded MT Bold" materialDesign:ShadowAssist.ShadowDepth="Depth4" Height="30" Width="90" Foreground="#337ab7"
+                 materialDesign:ButtonAssist.CornerRadius="5" FontSize="12" Content="Back" Click="btn_back_Click"   />
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

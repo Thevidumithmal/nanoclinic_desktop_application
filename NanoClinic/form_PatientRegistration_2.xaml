@@ -1,0 +1,181 @@
+﻿<Window xmlns:customcontrols="clr-namespace:DriveStorage.customcontrols" 
+        x:Class="NanoClinic.form_PatientRegistration_2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:NanoClinic"
+        mc:Ignorable="d"
+        Title="form_PatientRegistration_2" Height="800" Width="1438"
+        WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True"
+        WindowStyle="None" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/resources/icons.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Border CornerRadius="20" Background="White" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Registration"  Foreground="#337ab7" Margin="38,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold"/>
+
+            <materialDesign:DialogHost>
+                <materialDesign:PopupBox  Foreground="#337ab7" HorizontalAlignment="Right" Margin="0 20 45 0"
+                 PlacementMode="BottomAndAlignRightEdges" StaysOpen="False"
+                 Height="25">
+                    <StackPanel>
+                        <Button x:Name="btn_exit" ToolTip="Shut down Application" Margin="0 4 0 0" Content="Exit  Application" Click="btn_exit_Click"/>
+                        <Button x:Name="btn_logout" ToolTip="Logout Application" Content="Logout" Click="btn_logout_Click" />
+
+                    </StackPanel>
+
+                </materialDesign:PopupBox>
+            </materialDesign:DialogHost>
+
+            <Grid Grid.Row="1">
+                <TextBlock  Text="Guardian Information" VerticalAlignment="Top"  FontWeight="ExtraLight" FontSize="24" Margin="200,50"   />
+                <TextBlock  HorizontalAlignment="Right" VerticalAlignment="Top" Text="Patient Profile Image"  FontWeight="ExtraLight" FontSize="24" Margin="390,50"   />
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
+
+                    <Border  Height="350" Width="600" CornerRadius="12"  BorderBrush="#C2C3C3" BorderThickness="1" Margin="0,0,45,0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0" Width="175">
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                        
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0">
+                                        <TextBlock Text="First Name:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <TextBlock Text="NIC:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                    </Grid>
+                                    <Grid Grid.Row="2">
+                                        <TextBlock Text="Address:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                    </Grid>
+                                    <Grid Grid.Row="3">
+                                        <TextBlock Text="Telephone:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0" FontSize="18" FontWeight="ExtraLight"/>
+                                    </Grid>
+        
+                                </Grid>
+
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Width="375" VerticalAlignment="Center">
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+                                        
+                                    </Grid.RowDefinitions>
+
+                                    
+                                    <Grid Grid.Row="0">
+                                        <TextBox Padding="10,0,0,0" FontWeight="SemiBold"  x:Name="txt_guardianfirstname" BorderThickness="1" materialDesign:TextFieldAssist.TextFieldCornerRadius="8"  BorderBrush="#C2C3C3" FontSize="12" Height="35" Width="315" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam" PreviewMouseLeftButtonDown="txt_guardianfullname_PreviewMouseLeftButtonDown"/>
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <StackPanel x:Name="error_gurdian_firstname"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-15,0,0" Width="315" Height="20">
+                                            <Rectangle  Fill="#ff3333" Width="5" />
+
+                                            <TextBlock x:Name="txt_error_gurdian_firstname" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                        <TextBox Padding="10,0,0,0"  FontWeight="SemiBold"  x:Name="txt_guardiannic" BorderThickness="1" materialDesign:TextFieldAssist.TextFieldCornerRadius="8"  BorderBrush="#C2C3C3" FontSize="12" Height="35" Width="315" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam" PreviewMouseLeftButtonDown="txt_guardiannic_PreviewMouseLeftButtonDown"/>
+
+                                    </Grid>
+                                    <Grid Grid.Row="2">
+                                        <StackPanel x:Name="error_gurdian_nic"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-15,0,0" Width="315" Height="20">
+                                            <Rectangle  Fill="#ff3333" Width="5" />
+
+                                            <TextBlock x:Name="txt_error_gurdian_nic" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                        <TextBox Padding="10,0,0,0"  FontWeight="SemiBold" x:Name="txt_guardianaddress" BorderThickness="1" materialDesign:TextFieldAssist.TextFieldCornerRadius="8"  BorderBrush="#C2C3C3" FontSize="12" Height="35" Width="315" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam" PreviewMouseLeftButtonDown="txt_guardianaddress_PreviewMouseLeftButtonDown"/>
+                                    </Grid>
+                                    <Grid Grid.Row="3">
+                                        <StackPanel x:Name="error_gurdian_address"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-15,0,0" Width="315" Height="20">
+                                            <Rectangle  Fill="#ff3333" Width="5" />
+
+                                            <TextBlock x:Name="txt_error_gurdian_address" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                        <TextBox Padding="10,0,0,0"  FontWeight="SemiBold" x:Name="txt_guardiantelephone" BorderThickness="1" materialDesign:TextFieldAssist.TextFieldCornerRadius="8"  BorderBrush="#C2C3C3" FontSize="12" Height="35" Width="315" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam" PreviewMouseLeftButtonDown="txt_guardiantelephone_PreviewMouseLeftButtonDown"/>
+                                    </Grid>
+                                   
+
+                                </Grid>
+                                <StackPanel x:Name="error_gurdian_telephone"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-15,0,0" Width="315" Height="20">
+                                    <Rectangle  Fill="#ff3333" Width="5" />
+
+                                    <TextBlock x:Name="txt_error_gurdian_telephone" Background="#fce5cd" VerticalAlignment="Center" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Center"/>
+                                </StackPanel>
+
+
+                            </StackPanel>
+
+                        </StackPanel>
+
+                    </Border>
+
+                    <Border HorizontalAlignment="Right" Height="350" Width="400" CornerRadius="12" BorderBrush="#C2C3C3" BorderThickness="1" >
+                        
+                        <Ellipse materialDesign:ShadowAssist.ShadowDepth="Depth4" x:Name="btn_profileImage" Cursor="Hand" Height="300" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center" PreviewMouseLeftButtonDown="btn_profileImage_PreviewMouseLeftButtonDown">
+                            
+                            <Ellipse.Fill >
+
+                                <ImageBrush ImageSource="/assets/patient.png" x:Name="image" Stretch="UniformToFill"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+
+                    </Border>
+
+                </StackPanel>
+                <Border CornerRadius="12" BorderBrush="#C2C3C3" BorderThickness="1" Width="1050" Height="75" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,5,0,10"  >
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Cursor="Hand" x:Name="checkbox_termsand_conditions" BorderBrush="#c2c3c3" BorderThickness="1" Height="30" Width="30" HorizontalAlignment="Left" Margin="10,0" PreviewMouseLeftButtonDown="checkbox_termsand_conditions_PreviewMouseLeftButtonDown"/>
+                        <TextBlock Cursor="IBeam" Text="I have read and agree to the hospital" VerticalAlignment="Center" FontSize="14" FontWeight="ExtraLight"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5" Foreground="#337ab7">
+                            <Hyperlink NavigateUri="http://www.c-sharpcorner.com">Terms and Conditions.</Hyperlink>
+                        </TextBlock>
+                        
+
+
+                    </StackPanel>
+                    
+                </Border>
+                <StackPanel  x:Name="error_gurdian_checkbox" Margin="0,20"    Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Width="1000" Height="8">
+                    <Rectangle  Fill="#ff3333" Width="5" />
+
+                    <TextBlock x:Name="txt_error_gurdian_checkbox"  Background="#fce5cd" VerticalAlignment="Center" Width="1000"  Text=""  FontSize="12" Foreground="#ff3333" Padding="10,5"   HorizontalAlignment="Left"/>
+                </StackPanel>
+
+            </Grid>
+            <Grid Grid.Row="2">
+
+                <Button Background="#fff" BorderThickness="1" BorderBrush="#C2C3C3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="200,0" x:Name="btn_clearall" Style="{StaticResource MaterialDesignFlatButton}" FontFamily="Arial Rounded MT Bold" materialDesign:ShadowAssist.ShadowDepth="Depth4" Height="30" Width="90" Foreground="#337ab7"
+                 materialDesign:ButtonAssist.CornerRadius="5" FontSize="12" Content="Clear All" Click="btn_clearall_Click" />
+                <Button Background="#fff" BorderThickness="1" BorderBrush="#C2C3C3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,194,0" x:Name="btn_register" Style="{StaticResource MaterialDesignFlatButton}" FontFamily="Arial Rounded MT Bold" materialDesign:ShadowAssist.ShadowDepth="Depth4" Height="30" Width="90" Foreground="#337ab7"
+                 materialDesign:ButtonAssist.CornerRadius="5" FontSize="12" Content="Register" Click="btn_register_Click" />
+
+                
+            </Grid>
+        </Grid>
+    </Border>
+
+
+</Window>

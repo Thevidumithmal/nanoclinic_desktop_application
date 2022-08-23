@@ -1,0 +1,10 @@
+Patient Dashboard Designname -- form_PatientDashBoard
+General Button -- x:Name="btn_general"
+Profile Button -- x:Name="btn_profile"
+Appointment Button -- x:Name="btn_appointment"
+Health Button -- x:Name="btn_health"
+ProfileImage with Ellipse -- x:Name="btn_profileImage"
+BackArrow -- x:Name="btn_back"
+NextArrow -- x:Name="btn_next"
+ThreeDots/ExitApplication -- x:Name="btn_exit"
+ThreeDots/Help me -- x:Name="btn_help"

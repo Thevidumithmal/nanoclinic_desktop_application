@@ -1,0 +1,27 @@
+Patient Dashboard Designname -- form_PatientDashBoard  
+General Button -- x:Name="btn_general"
+Profile Button -- x:Name="btn_profile"
+Appointment Button -- x:Name="btn_appointment"
+Health Button -- x:Name="btn_health"
+ProfileImage with Ellipse -- x:Name="btn_profileImage"
+BackArrow -- x:Name="btn_back"
+NextArrow -- x:Name="btn_next"
+ThreeDots/ExitApplication -- x:Name="btn_exit"
+ThreeDots/Help me -- x:Name="btn_help"
+Patient Profile Designname -- form_PatientProfile 
+Username -- x:Name="txt_username"
+Reports Button -- btn_reports
+Schedule Button -- btn_schedule
+Patients Button -- btn_patient
+Patient Dashboard Center Page Title left -- txt_titleleft
+Patient Dashboard Center Page Title Right -- txt_titleright
+Big Folder 1st -- x:Name="btn_thevidu"
+Big Folder 2nd -- x:Name="btn_manula"
+Big Folder 3rd -- x:Name="btn_sunethi"
+LoginForm Login Button -- x:Name="btn_Login"
+LoginForm Register Button -- x:Name="btn_register"
+Active Patients -- x:Name="txt_acticepatients"
+Appointments -- txt_appointments
+Welcome Doctor -- x:Name="txt_welcomedoctor
+ 
+

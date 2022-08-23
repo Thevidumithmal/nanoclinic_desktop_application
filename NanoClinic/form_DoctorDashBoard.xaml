@@ -1,0 +1,612 @@
+﻿<Window xmlns:customcontrols="clr-namespace:DriveStorage.customcontrols" 
+        x:Class="NanoClinic.form_DoctorDashBoard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:NanoClinic"
+        mc:Ignorable="d"
+        Title="form_DoctorDashBoard" Height="800" Width="1438"
+        WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True"
+        WindowStyle="None" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/resources/icons.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <!--Full Page Layout-->
+
+    <Border CornerRadius="20" Background="White">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="228"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="323"/>
+            </Grid.ColumnDefinitions>
+            <!--Left Side Panel-->
+            <Grid>
+                <StackPanel Orientation="Vertical" Margin="0,83,0,0">
+                    <TextBlock Text="nanoClinic." Margin="65,0,0,0" Foreground="#337ab7" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="21" FontFamily="Arial Rounded MT Bold"/>
+
+
+                    <StackPanel Orientation="Vertical" Margin="0,150,0,0">
+                        <TextBlock Margin="65,0" Text="MENU" Style="{StaticResource TitleText}"/>
+                        <!--We only want to select one button at a time...for that we will use radio buttons i will show you why..-->
+                        <customcontrols:MenuButton x:Name="btn_general" Margin="0,15,0,0" Padding="65,0,0,0" Icon="{StaticResource MyFilesFolder}" Text="General"  GroupName="MenuButton" Cursor="Hand"/>
+                        <customcontrols:MenuButton x:Name="btn_profile" Padding="65,0,0,0" Icon="{StaticResource plus}" Text="Profile"  GroupName="MenuButton" Cursor="Hand" PreviewMouseLeftButtonDown="btn_profile_PreviewMouseLeftButtonDown"/>
+                        <customcontrols:MenuButton x:Name="btn_appointment" Padding="65,0,0,0" Icon="{StaticResource MyDrive}" Text="Appointments"  GroupName="MenuButton" Cursor="Hand" PreviewMouseLeftButtonDown="btn_appointment_PreviewMouseLeftButtonDown"/>
+                        <customcontrols:MenuButton x:Name="btn_reports" Padding="65,0,0,0" Icon="{StaticResource Pdf}" Text="Reports"  GroupName="MenuButton" Cursor="Hand" PreviewMouseLeftButtonDown="btn_reports_PreviewMouseLeftButtonDown"/>
+                        <customcontrols:MenuButton x:Name="btn_schedule" Padding="65,0,0,0" Icon="{StaticResource more}" Text="Schedule"  GroupName="MenuButton" Cursor="Hand" PreviewMouseLeftButtonDown="btn_schedule_PreviewMouseLeftButtonDown"/>
+                        <customcontrols:MenuButton x:Name="btn_patients" Padding="65,0,0,0" Icon="{StaticResource Search}" Text="Patients"  GroupName="MenuButton" Cursor="Hand" PreviewMouseLeftButtonDown="btn_patients_PreviewMouseLeftButtonDown"/>
+                    </StackPanel>
+                </StackPanel>
+                <!--Profile AND Username-->
+                <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,49">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Ellipse x:Name="btn_profileImage" Cursor="Hand" Height="36" Width="36" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="/assets/manula.jpg" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Grid Grid.Column="1" Margin="14,0,0,0" Width="76">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="txt_username" Text="" Style="{StaticResource MainText}"/>
+                        <TextBlock Grid.Row="1" Text="Doctor" Style="{StaticResource TitleText}"/>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+
+
+            <!--Center Page Layout-->
+
+
+            <Grid Grid.Column="1" Background="#EFF2F8">
+
+                <TextBlock Text="Dashboard" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,85,0,0" FontSize="18" FontWeight="SemiBold"/>
+
+                <!--Left icon-->
+                <Path x:Name="btn_back" Data="{StaticResource Left}" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="101,85" Stretch="UniformToFill" Width="22" Height="17" Fill="#C2C3C3" PreviewMouseLeftButtonDown="btn_back_PreviewMouseLeftButtonDown"/>
+
+                <!--Right Icon-->
+                <Path x:Name="btn_next" Cursor="Hand"  Data="{StaticResource Right}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="60,85" Stretch="UniformToFill" Width="22" Height="17" Fill="#C2C3C3" PreviewMouseLeftButtonDown="btn_next_PreviewMouseLeftButtonDown"/>
+
+
+
+                <StackPanel Orientation="Vertical" Margin="15,120,15,15">
+                    <StackPanel Margin="15,20" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" >
+
+
+                        <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15,20" CornerRadius="20" Width="760" Height="150" Background="#BFE2FF"  BorderThickness="0" >
+                        </Border>
+
+                        <StackPanel Margin="60,-215,0,0" Orientation="Horizontal" VerticalAlignment="Center" >
+                            <TextBlock Text="Welcome, " VerticalAlignment="Center"  FontSize="24" FontFamily="Poppins" FontWeight="SemiBold"/>
+                            <TextBlock x:Name="txt_welcomedoctor" Text="" VerticalAlignment="Center" Foreground="#337ab7" FontSize="34" FontFamily="Arial Rounded MT Bold"/>
+                        </StackPanel>
+                        <TextBlock Margin="60,-88,0,0" Text="Here are your important task,Update and alert ." FontSize="11" FontFamily="Poppins" FontWeight="SemiBold" />
+
+                        <Image Source="/assets/DoctorHeader.png" Height="180" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,-228,60,0" />
+
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="230" Margin="45,0">
+
+
+                        <StackPanel Orientation="Vertical">
+
+
+
+
+
+                            <Border VerticalAlignment="Center" BorderThickness="1"  HorizontalAlignment="Center" BorderBrush="#337ab7" Margin="5,0" CornerRadius="20" Width="250" Height="190" Background="Transparent" >
+
+
+
+                                <Grid>
+
+                                    <TextBlock Text="Patient Summary" HorizontalAlignment="Center" Margin="0,8,0,0" FontFamily="Arial Rounded MT Bold" FontSize="12"/>
+
+
+                                    <Wpf:PieChart Cursor="Hand" Name="Doughnut1" Series="{Binding seriesCollection1}" LegendLocation="Left"
+                      InnerRadius="38" Width="150" Height="150" Margin="-65,5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                                        <Wpf:PieChart.ChartLegend>
+                                            <Wpf:DefaultLegend BulletSize="20"></Wpf:DefaultLegend>
+                                        </Wpf:PieChart.ChartLegend>
+
+                                        <Wpf:PieChart.DataTooltip>
+                                            <Wpf:DefaultTooltip BulletSize="20"></Wpf:DefaultTooltip>
+                                        </Wpf:PieChart.DataTooltip>
+
+                                    </Wpf:PieChart>
+
+
+                                </Grid>
+
+                            </Border>
+
+
+                        </StackPanel>
+                        <StackPanel>
+
+                            <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0" CornerRadius="20" Width="250" Height="190" Background="Transparent" BorderThickness="1" BorderBrush="#c2c3c3" >
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="60"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="Mission" FontFamily="Arial Rounded MT Bold" FontSize="22" Foreground="#337ab7" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <TextBox IsReadOnly="True" Cursor="IBeam" x:Name="txt_mission" TextWrapping="Wrap" Width="230" BorderThickness="0" Height="125" FontSize="12" Margin="10,0"  VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" Text="Our mission is to utilize cost effective solutions  and advanced technology as providers of exceptional,ethical and accessible healthcarein order to improve and enrich lives."  Grid.Row="1" />
+                                </Grid>
+
+
+                            </Border>
+
+                        </StackPanel>
+                        <StackPanel>
+
+                            <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0" CornerRadius="20" Width="240" Height="190" Background="Transparent" BorderThickness="1" BorderBrush="#c2c3c3" >
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="60"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="Vision" FontFamily="Arial Rounded MT Bold" FontSize="22" Foreground="#337ab7" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <TextBox IsReadOnly="True" Cursor="IBeam" x:Name="txt_vission" TextWrapping="Wrap" Width="220" BorderThickness="0" Height="125" FontSize="12" Margin="10,0"  VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" Text="Our vision is to be the most respected  and leading healthcare provider that will build a healthier community in Sri Lanka."  Grid.Row="1" />
+                                </Grid>
+
+
+                            </Border>
+
+                        </StackPanel>
+
+
+
+
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Height="230" Margin="45,-18">
+
+
+                        <StackPanel Orientation="Vertical">
+
+
+
+
+
+                            <Border VerticalAlignment="Center" BorderThickness="1"  HorizontalAlignment="Center" BorderBrush="#337ab7" Margin="5,0" CornerRadius="20" Width="510" Height="190" Background="Transparent" >
+
+
+                                <StackPanel Orientation="Horizontal">
+
+                                    <StackPanel Orientation="Vertical" Margin="10,0,0,0" VerticalAlignment="Center">
+                                        <TextBlock Text="Doctors" Margin="0,0,0,10" FontFamily="Arial Rounded MT Bold" FontSize="15" Foreground="#337ab7" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+
+                                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0" Width="95">
+                                                <Grid >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="35"/>
+                                                        <RowDefinition Height="35"/>
+                                                        <RowDefinition Height="35"/>
+                                                        <RowDefinition Height="35"/>
+
+                                                    </Grid.RowDefinitions>
+
+                                                    <Grid Grid.Row="0">
+                                                        <TextBlock Text="Dr.Sunethi" x:Name="txt_doc_name1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                                    </Grid>
+                                                    <Grid Grid.Row="1">
+                                                        <TextBlock Text="Dr.Thevidu:" x:Name="txt_doc_name2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                                    </Grid>
+                                                    <Grid Grid.Row="2">
+                                                        <TextBlock Text="Dr.Manula:" x:Name="txt_doc_name3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                                    </Grid>
+                                                    <Grid Grid.Row="3">
+                                                        <TextBlock Text="Dr.Pasindu:" x:Name="txt_doc_name4" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                                    </Grid>
+
+                                                </Grid>
+
+                                            </StackPanel>
+                                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="120" VerticalAlignment="Center">
+                                                <Grid >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="35"/>
+                                                        <RowDefinition Height="35"/>
+                                                        <RowDefinition Height="35"/>
+                                                        <RowDefinition Height="35"/>
+
+                                                    </Grid.RowDefinitions>
+
+                                                    <Grid Grid.Row="0">
+                                                        <TextBox Padding="10,0,0,0" Text="0311234567" IsReadOnly="True" FontWeight="SemiBold"  x:Name="txt_Doctor_num1" BorderThickness="0,0,0,1"   BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+
+
+                                                    </Grid>
+                                                    <Grid Grid.Row="1">
+                                                        <TextBox Padding="10,0,0,0" Text="0311234567" IsReadOnly="True" FontWeight="SemiBold"  x:Name="txt_Doctor_num2" BorderThickness="0,0,0,1"  BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+                                                    </Grid>
+                                                    <Grid Grid.Row="2">
+                                                        <TextBox Padding="10,0,0,0" Text="0311234567" IsReadOnly="True" FontWeight="SemiBold"  x:Name="txt_Doctor_num3" BorderThickness="0,0,0,1"  BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+
+                                                    </Grid>
+                                                    <Grid Grid.Row="3">
+                                                        <TextBox Padding="10,0,0,0" Text="0311234567" IsReadOnly="True" FontWeight="SemiBold"  x:Name="txt_Doctor_num4" BorderThickness="0,0,0,1" BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+                                                    </Grid>
+
+                                                </Grid>
+
+
+                                            </StackPanel>
+
+
+
+                                        </StackPanel>
+
+
+                                    </StackPanel>
+
+
+                                    <StackPanel Orientation="Vertical" Margin="50,0,0,0" VerticalAlignment="Center">
+                                        <TextBlock Text="Medical Staff" Margin="0,0,0,10" FontFamily="Arial Rounded MT Bold" FontSize="15" Foreground="#337ab7" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+
+                                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0" Width="95">
+                                                <Grid >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="35"/>
+                                                        <RowDefinition Height="35"/>
+                                                        <RowDefinition Height="35"/>
+                                                        <RowDefinition Height="35"/>
+
+                                                    </Grid.RowDefinitions>
+
+                                                    <Grid Grid.Row="0">
+                                                        <TextBlock Text="Ms.Sunethi" x:Name="txt_staff_name1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                                    </Grid>
+                                                    <Grid Grid.Row="1">
+                                                        <TextBlock Text="Mr.Thevidu:" x:Name="txt_staff_name2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                                    </Grid>
+                                                    <Grid Grid.Row="2">
+                                                        <TextBlock Text="Mr.Manula:" x:Name="txt_staff_name3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                                    </Grid>
+                                                    <Grid Grid.Row="3">
+                                                        <TextBlock Text="Dr.Pasindu:" x:Name="txt_staff_name4" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                                    </Grid>
+
+                                                </Grid>
+
+                                            </StackPanel>
+                                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="120" VerticalAlignment="Center">
+                                                <Grid >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="35"/>
+                                                        <RowDefinition Height="35"/>
+                                                        <RowDefinition Height="35"/>
+                                                        <RowDefinition Height="35"/>
+
+                                                    </Grid.RowDefinitions>
+
+                                                    <Grid Grid.Row="0">
+                                                        <TextBox Padding="10,0,0,0" Text="0311234567" IsReadOnly="True" FontWeight="SemiBold"  x:Name="txt_staff_num1" BorderThickness="0,0,0,1"  BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+
+
+                                                    </Grid>
+                                                    <Grid Grid.Row="1">
+                                                        <TextBox Padding="10,0,0,0" Text="0311234567" IsReadOnly="True" FontWeight="SemiBold"  x:Name="txt_staff_num2" BorderThickness="0,0,0,1"  BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+                                                    </Grid>
+                                                    <Grid Grid.Row="2">
+                                                        <TextBox Padding="10,0,0,0" Text="0311234567" IsReadOnly="True" FontWeight="SemiBold"  x:Name="txt_staff_num3" BorderThickness="0,0,0,1"  BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+
+                                                    </Grid>
+                                                    <Grid Grid.Row="3">
+                                                        <TextBox Padding="10,0,0,0" Text="0311234567" IsReadOnly="True" FontWeight="SemiBold"  x:Name="txt_staff_num4" BorderThickness="0,0,0,1"  BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+                                                    </Grid>
+
+                                                </Grid>
+
+
+                                            </StackPanel>
+
+
+
+                                        </StackPanel>
+
+
+                                    </StackPanel>
+
+
+
+
+
+
+
+
+
+                                    <StackPanel>
+
+                                    </StackPanel>
+
+
+
+                                </StackPanel>
+
+
+                            </Border>
+
+
+                        </StackPanel>
+
+
+
+
+
+
+
+
+                        <StackPanel>
+
+                            <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0" CornerRadius="20" Width="240" Height="190" Background="Transparent" BorderThickness="1" BorderBrush="#c2c3c3" >
+
+                                <StackPanel Orientation="Vertical" Margin="15,0,0,0" VerticalAlignment="Center">
+                                    <TextBlock Text="Administrators" Margin="0,0,0,10" FontFamily="Arial Rounded MT Bold" FontSize="15" Foreground="#337ab7" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0" Width="95">
+                                            <Grid >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="35"/>
+                                                    <RowDefinition Height="35"/>
+                                                    <RowDefinition Height="35"/>
+                                                    <RowDefinition Height="35"/>
+
+                                                </Grid.RowDefinitions>
+
+                                                <Grid Grid.Row="0">
+                                                    <TextBlock Text="Ms.Sunethi" x:Name="txt_admin_name1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                                </Grid>
+                                                <Grid Grid.Row="1">
+                                                    <TextBlock Text="Mr.Thevidu:" x:Name="txt_admin_name2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                                </Grid>
+                                                <Grid Grid.Row="2">
+                                                    <TextBlock Text="Mr.Manula:" x:Name="txt_admin_name3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                                </Grid>
+                                                <Grid Grid.Row="3">
+                                                    <TextBlock Text="Dr.Pasindu:" x:Name="txt_admin_name4" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                                </Grid>
+
+                                            </Grid>
+
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="120" VerticalAlignment="Center">
+                                            <Grid >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="35"/>
+                                                    <RowDefinition Height="35"/>
+                                                    <RowDefinition Height="35"/>
+                                                    <RowDefinition Height="35"/>
+
+                                                </Grid.RowDefinitions>
+
+                                                <Grid Grid.Row="0">
+                                                    <TextBox Padding="10,0,0,0" Text="0311234567" IsReadOnly="True" FontWeight="SemiBold"  x:Name="txt_admin_num1" BorderThickness="0,0,0,1"  BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+
+
+                                                </Grid>
+                                                <Grid Grid.Row="1">
+                                                    <TextBox Padding="10,0,0,0" Text="0311234567" IsReadOnly="True" FontWeight="SemiBold"  x:Name="txt_admin_num2" BorderThickness="0,0,0,1"  BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+                                                </Grid>
+                                                <Grid Grid.Row="2">
+                                                    <TextBox Padding="10,0,0,0" Text="0311234567" IsReadOnly="True" FontWeight="SemiBold"  x:Name="txt_admin_num3" BorderThickness="0,0,0,1"  BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+
+                                                </Grid>
+                                                <Grid Grid.Row="3">
+                                                    <TextBox Padding="10,0,0,0" Text="0311234567" IsReadOnly="True" FontWeight="SemiBold"  x:Name="txt_admin_num4" BorderThickness="0,0,0,1"  BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+                                                </Grid>
+
+                                            </Grid>
+
+
+                                        </StackPanel>
+
+
+
+                                    </StackPanel>
+
+
+                                </StackPanel>
+
+
+
+                            </Border>
+
+                        </StackPanel>
+
+
+
+
+
+                    </StackPanel>
+
+
+
+
+                </StackPanel>
+
+
+
+
+
+            </Grid>
+
+
+            <Grid Grid.Column="2">
+                <StackPanel Orientation="Vertical" Margin="0,62,0,0">
+
+
+
+
+
+
+                    <materialDesign:DialogHost CloseOnClickAway="True" x:Name="DialogHost" >
+                        <materialDesign:PopupBox  Foreground="#337ab7" HorizontalAlignment="Right" Margin="0 20 20 0"
+                 PlacementMode="BottomAndAlignRightEdges" StaysOpen="False"
+                 Height="25">
+                            <StackPanel Width="125">
+                                <Button x:Name="btn_exit" ToolTip="Shut down Application" Margin="0 4 0 0" Content="Exit  Application" Click="btn_exit_Click"/>
+                                <Button x:Name="btn_logout" ToolTip="Logout Application" Content="Logout" Click="btn_logout_Click" />
+
+                            </StackPanel>
+
+                        </materialDesign:PopupBox>
+                    </materialDesign:DialogHost>
+
+                    <StackPanel>
+
+
+                        <TextBlock x:Name="time" Text="" FontSize="35" FontFamily="Arial Rounded MT Bold"  Foreground="#337ab7" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-100,0,0"/>
+
+                    </StackPanel>
+
+
+
+
+                    <!--
+                    <StackPanel Orientation="Vertical" Margin="0,25,0,0" Height="350" VerticalAlignment="Top">
+                        <Grid>
+                        <Rectangle RadiusX="20" RadiusY="20" Width="275" Height="140" Fill="#EFF2F8"/>
+                            
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10">
+                                <TextBlock Text="Active Patients" FontSize="20" FontWeight="SemiBold" FontFamily="Arial Rounded MT Bold"/>
+                                <TextBlock x:Name="txt_acticepatients" HorizontalAlignment="Center" Text="08" FontSize="36" Margin="0,10" FontWeight="Bold" Foreground="#337ab7" FontFamily="Arial Rounded MT Bold"/>
+                            </StackPanel>
+                            
+                        </Grid>
+                        <Grid>
+                            <Rectangle RadiusX="20" RadiusY="20" Width="275" Height="140" Fill="#EFF2F8"/>
+
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,50">
+                                <TextBlock Text="Appointments" FontSize="20" FontWeight="SemiBold" FontFamily="Arial Rounded MT Bold"/>
+                                <TextBlock x:Name="txt_appointments" HorizontalAlignment="Center" Text="13" FontSize="36" Margin="0,10" FontWeight="Bold" Foreground="#337ab7" FontFamily="Arial Rounded MT Bold"/>
+                            </StackPanel>
+
+                        </Grid>
+
+                    </StackPanel>-->
+
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
+
+
+                        <StackPanel>
+
+                            <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0" CornerRadius="15" Width="150" Height="140" Background="#BFE2FF" BorderThickness="0" >
+                            </Border>
+
+                            <customcontrols:MenuButton  Margin="-10,-230,0,0" HorizontalAlignment="Center"  Icon="{StaticResource plus}" Text="Total Patient"   GroupName="MenuButton" Cursor="Hand"/>
+
+                            <TextBlock  Margin="0,-120,0,0"  Text="05" x:Name="txt_total_patients" TextAlignment="Center" VerticalAlignment="Center"  FontFamily="Arial Rounded MT Bold" FontSize="60" Foreground="#337ab7" />
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical">
+
+                            <StackPanel>
+
+                                <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" CornerRadius="15"  Width="150" Height="65" Background="#BFE2FF" BorderThickness="0" >
+                                </Border>
+                                <customcontrols:MenuButton  Margin="-10,-100,0,0" HorizontalAlignment="Center"  Icon="{StaticResource MyDrive}" Text="Appointments"   GroupName="MenuButton" Cursor="Hand"/>
+
+
+                                <TextBlock  Margin="0,-40,0,0" x:Name="txt_total_appointments" Text="22" TextAlignment="Center" VerticalAlignment="Center"  FontFamily="Arial Rounded MT Bold" FontSize="35" Foreground="#50C7C7" />
+
+                            </StackPanel>
+                            <StackPanel>
+
+                                <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,10,0,0" CornerRadius="15"  Width="150" Height="65" Background="#BFE2FF" BorderThickness="0" >
+                                </Border>
+                                <customcontrols:MenuButton  Margin="-10,-100,0,0" HorizontalAlignment="Center"  Icon="{StaticResource more}" Text="Schedules"   GroupName="MenuButton" Cursor="Hand"/>
+
+
+                                <TextBlock  Margin="0,-40,0,0" Text="12" x:Name="txt_total_schedules" TextAlignment="Center" VerticalAlignment="Center"  FontFamily="Arial Rounded MT Bold" FontSize="35" Foreground="#50C7C7" />
+
+                            </StackPanel>
+
+
+                        </StackPanel>
+
+
+                    </StackPanel>
+
+                    <Border  CornerRadius="20" Width="270" Height="200" Background="Transparent" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Announcements" FontFamily="Arial Rounded MT Bold" FontSize="16" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="txt_announcements_appointments" TextWrapping="Wrap" Width="260" BorderThickness="0" Height="140" FontSize="14"   VerticalAlignment="Center" Foreground="#C2C3C3" FontWeight="SemiBold"  TextAlignment="Center" Text="There will be a flag raising ceremony next Monday.All students must wear white uniforms.Don't be late." Margin="0,25,0,0" Grid.Row="1" />
+                        </Grid>
+                    </Border>
+                    <Border  CornerRadius="20" Width="270" Height="280" Background="Transparent" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" HorizontalAlignment="Center" Margin="0,15,0,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Calendar  Margin="0,0,0,-220" materialDesign:CalendarAssist.IsHeaderVisible="False"  VerticalAlignment="Bottom" Width="250" Height="260" HorizontalAlignment="Center"   Background="Transparent" SelectionMode="MultipleRange" x:Name="calender" DisplayDateStart="2000/01/01"  DisplayDate="" />
+
+                        </Grid>
+
+
+
+                    </Border>
+
+                </StackPanel>
+
+
+
+
+
+
+
+
+
+
+            </Grid>
+
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,594 @@
+﻿<Window xmlns:customcontrols="clr-namespace:DriveStorage.customcontrols"
+        x:Class="NanoClinic.form_DoctorSchedule"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:NanoClinic"
+        mc:Ignorable="d"
+        Title="form_DoctorSchedule" Height="800" Width="1438"
+         WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True"
+        WindowStyle="None" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/resources/icons.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <!--Full Page Layout-->
+
+    <Border CornerRadius="20" Background="White">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="228"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="323"/>
+            </Grid.ColumnDefinitions>
+            <!--Left Side Panel-->
+            <Grid>
+                <StackPanel Orientation="Vertical" Margin="0,83,0,0">
+                    <TextBlock Text="nanoClinic." Margin="65,0,0,0" Foreground="#337ab7" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="21" FontFamily="Arial Rounded MT Bold"/>
+
+
+                    <StackPanel Orientation="Vertical" Margin="0,150,0,0">
+                        <TextBlock Margin="65,0" Text="MENU" Style="{StaticResource TitleText}"/>
+                        <!--We only want to select one button at a time...for that we will use radio buttons i will show you why..-->
+                        <customcontrols:MenuButton x:Name="btn_general" Margin="0,15,0,0" Padding="65,0,0,0" Icon="{StaticResource MyFilesFolder}" Text="General"  GroupName="MenuButton" Cursor="Hand" PreviewMouseLeftButtonDown="btn_general_PreviewMouseLeftButtonDown"/>
+                        <customcontrols:MenuButton x:Name="btn_profile" Padding="65,0,0,0" Icon="{StaticResource plus}" Text="Profile"  GroupName="MenuButton" Cursor="Hand" PreviewMouseLeftButtonDown="btn_profile_PreviewMouseLeftButtonDown"/>
+                        <customcontrols:MenuButton x:Name="btn_appointment" Padding="65,0,0,0" Icon="{StaticResource MyDrive}" Text="Appointments"  GroupName="MenuButton" Cursor="Hand" PreviewMouseLeftButtonDown="btn_appointment_PreviewMouseLeftButtonDown"/>
+                        <customcontrols:MenuButton x:Name="btn_reports" Padding="65,0,0,0" Icon="{StaticResource Pdf}" Text="Reports"  GroupName="MenuButton" Cursor="Hand" PreviewMouseLeftButtonDown="btn_reports_PreviewMouseLeftButtonDown"/>
+                        <customcontrols:MenuButton x:Name="btn_schedule" Padding="65,0,0,0" Icon="{StaticResource more}" Text="Schedule"  GroupName="MenuButton" Cursor="Hand"/>
+                        <customcontrols:MenuButton x:Name="btn_patients" Padding="65,0,0,0" Icon="{StaticResource Search}" Text="Patients"  GroupName="MenuButton" Cursor="Hand" PreviewMouseLeftButtonDown="btn_patients_PreviewMouseLeftButtonDown"/>
+                    </StackPanel>
+                </StackPanel>
+                <!--Profile AND Username-->
+                <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,49">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Ellipse x:Name="btn_profileImage" Cursor="Hand" Height="36" Width="36" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="/assets/manula.jpg" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Grid Grid.Column="1" Margin="14,0,0,0" Width="76">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="txt_username" Text="Mrs.Bhagya" Style="{StaticResource MainText}"/>
+                        <TextBlock Grid.Row="1" Text="Doctor" Style="{StaticResource TitleText}"/>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+
+
+            <!--Center Page Layout-->
+
+
+            <Grid Grid.Column="1" Background="#EFF2F8">
+                <Image Source="/assets/background_doctors.png" Height="600" Opacity="0.04"/>
+                <TextBlock Text="Schedule" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,85,0,0" FontSize="18" FontWeight="SemiBold"/>
+
+                <!--Left icon-->
+                <Path x:Name="btn_back" Data="{StaticResource Left}" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="101,85" Stretch="UniformToFill" Width="22" Height="17" Fill="#C2C3C3" PreviewMouseLeftButtonDown="btn_back_PreviewMouseLeftButtonDown"/>
+
+                <!--Right Icon-->
+                <Path x:Name="btn_next" Cursor="Hand"  Data="{StaticResource Right}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="60,85" Stretch="UniformToFill" Width="22" Height="17" Fill="#C2C3C3" PreviewMouseLeftButtonDown="btn_next_PreviewMouseLeftButtonDown"/>
+
+
+
+
+
+                
+
+                <StackPanel Orientation="Vertical">
+
+
+
+                    <StackPanel Orientation="Horizontal">
+                        
+                        
+                    
+                    
+                    <StackPanel HorizontalAlignment="Left"  VerticalAlignment="Center" Orientation="Vertical" Margin="60,160,0,0" Height="300">
+
+                        <TextBlock Text="New Schedule" FontFamily="Arial Rounded MT Bold" FontSize="16" Foreground="#337ab7" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                        <StackPanel  Orientation="Horizontal"  Margin="0,15,0,0" >
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="175">
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0">
+                                        <TextBlock Text="Schedule Date" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,21,0,20.6" FontSize="18" FontWeight="ExtraLight"/>
+
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <TextBlock Text="Time Slots" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0" FontSize="18" FontWeight="ExtraLight"/>
+                                    </Grid>
+
+
+
+
+
+                                </Grid>
+
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="-50,0,0,0" HorizontalAlignment="Right" Width="300" VerticalAlignment="Top">
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="75"/>
+                                        <RowDefinition Height="75"/>
+
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0">
+
+                                        <DatePicker Padding="10,0,0,0"  FontWeight="SemiBold" IsTodayHighlighted="True"  x:Name="doctor_schedule_date_picker" materialDesign:HintAssist.Hint="Schedule date"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="280" Height="30" BorderBrush="#C2C3C3" BorderThickness="1" SelectedDateFormat="Short" DisplayDateStart="1922-03-20" PreviewMouseLeftButtonDown="doctor_schedule_date_picker_PreviewMouseLeftButtonDown"   />
+
+
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <StackPanel x:Name="error_date_picker_date"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-10,0,0" Width="280" Height="18">
+                                            <Rectangle  Fill="#ff3333" Width="5" />
+
+                                            <TextBlock x:Name="txt_error_date_picker_date" Background="#fce5cd" VerticalAlignment="Top" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,0"   HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                        <ComboBox Background="Transparent" Cursor="Hand"  x:Name="cmb_schedule_time_slots" Width="280" FontSize="14"
+                          materialDesign:HintAssist.Hint="Time slots" BorderThickness="1"  FontWeight="SemiBold"
+                          BorderBrush="#C2C3C3" Style="{StaticResource MaterialDesignOutlinedComboBox}" PreviewMouseLeftButtonDown="cmb_schedule_time_slots_PreviewMouseLeftButtonDown"  >
+                                            <ComboBoxItem Content="07.00am - 10.00am"/>
+                                            <Separator/>
+                                            <ComboBoxItem Content="11.00am - 14.00pm"/>
+                                            <Separator/>
+                                            <ComboBoxItem Content="15.00pm - 18.00pm"/>
+                                            <Separator/>
+                                            <ComboBoxItem Content="19.00pm - 22.00pm"/>
+
+
+                                        </ComboBox>
+                                    </Grid>
+
+
+
+                                </Grid>
+                                <StackPanel x:Name="error_cmb_time_slots"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-10,0,0" Width="280" Height="18">
+                                    <Rectangle  Fill="#ff3333" Width="5" />
+
+                                    <TextBlock x:Name="txt_error_cmb_time_slots" Background="#fce5cd" VerticalAlignment="Top" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,0"   HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+
+
+
+
+
+
+
+
+
+
+                        </StackPanel>
+
+
+                        <StackPanel Orientation="Horizontal" Margin="0,50,0,0" >
+
+                            <Button  BorderThickness="1" BorderBrush="#c2c3c3" Background="Transparent" Margin="138,0,0,0 "  x:Name="btn_clear" Foreground="#c2c3c3" Style="{StaticResource MaterialDesignFlatButton}" FontFamily="Arial Rounded MT Bold" materialDesign:ShadowAssist.ShadowDepth="Depth4" VerticalAlignment="Bottom"  Height="30" Width="90"
+                        materialDesign:ButtonAssist.CornerRadius="7" FontSize="16" Content="Clear" Click="btn_clear_Click" />
+
+                            <Button  BorderThickness="1" BorderBrush="#c2c3c3" Background="Transparent" Margin="100,0,0,0 "  x:Name="btn_create" Foreground="#c2c3c3" Style="{StaticResource MaterialDesignFlatButton}" FontFamily="Arial Rounded MT Bold" materialDesign:ShadowAssist.ShadowDepth="Depth4" VerticalAlignment="Bottom"  Height="30" Width="90"
+                        materialDesign:ButtonAssist.CornerRadius="7" FontSize="16" Content="Create" Click="btn_create_Click" />
+
+                        </StackPanel>
+                        
+
+
+                    </StackPanel>
+
+
+
+
+                        <StackPanel Orientation="Vertical" Margin="0,160,0,0">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <Border   CornerRadius="10" Width="100" Height="100" Margin="60,20,0,0" Background="#BFE2FF" BorderThickness="0" BorderBrush="#337ab7">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Schedule 01:" x:Name="Schedule_1_head" FontFamily="Arial Rounded MT Bold" FontSize="12" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="Hand" x:Name="Schedule_1_date" TextWrapping="Wrap" Width="90" BorderThickness="0" Height="30" FontSize="14" Text=""  VerticalAlignment="Top" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="Hand" x:Name="Schedule_1_time" TextWrapping="Wrap" Width="90" BorderThickness="0" Height="30" FontSize="14" Text=""  VerticalAlignment="Top" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+
+                                <Border   CornerRadius="10" Width="100" Height="100" Margin="10,20,0,0" Background="#BFE2FF" BorderThickness="0" BorderBrush="#337ab7">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Schedule 02:" x:Name="Schedule_2_head" FontFamily="Arial Rounded MT Bold" FontSize="12" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="Hand" x:Name="Schedule_2_date" TextWrapping="Wrap" Width="90" BorderThickness="0" Height="30" FontSize="14" Text=""  VerticalAlignment="Top" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="Hand" x:Name="Schedule_2_time" TextWrapping="Wrap" Width="90" BorderThickness="0" Height="30" FontSize="14" Text=""  VerticalAlignment="Top" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+
+                                <Border   CornerRadius="10" Width="100" Height="100" Margin="10,20,0,0" Background="#BFE2FF" BorderThickness="0" BorderBrush="#337ab7">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Schedule 02:" x:Name="Schedule_3_head" FontFamily="Arial Rounded MT Bold" FontSize="12" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="Hand" x:Name="Schedule_3_date" TextWrapping="Wrap" Width="90" BorderThickness="0" Height="30" FontSize="14" Text=""  VerticalAlignment="Top" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="Hand" x:Name="Schedule_3_time" TextWrapping="Wrap" Width="90" BorderThickness="0" Height="30" FontSize="14" Text=""  VerticalAlignment="Top" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+
+
+
+                            </StackPanel>
+
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <Border   CornerRadius="10" Width="100" Height="100" Margin="60,20,0,0" Background="#BFE2FF" BorderThickness="0" BorderBrush="#337ab7">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Schedule 04:" x:Name="Schedule_4_head" FontFamily="Arial Rounded MT Bold" FontSize="12" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="Hand" x:Name="Schedule_4_date" TextWrapping="Wrap" Width="90" BorderThickness="0" Height="30" FontSize="14" Text=""  VerticalAlignment="Top" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="Hand" x:Name="Schedule_4_time" TextWrapping="Wrap" Width="90" BorderThickness="0" Height="30" FontSize="14" Text=""  VerticalAlignment="Top" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+
+                                <Border   CornerRadius="10" Width="100" Height="100" Margin="10,20,0,0" Background="#BFE2FF" BorderThickness="0" BorderBrush="#337ab7">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Schedule 05:" x:Name="Schedule_5_head" FontFamily="Arial Rounded MT Bold" FontSize="12" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="Hand" x:Name="Schedule_5_date" TextWrapping="Wrap" Width="90" BorderThickness="0" Height="30" FontSize="14" Text=""  VerticalAlignment="Top" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="Hand" x:Name="Schedule_5_time" TextWrapping="Wrap" Width="90" BorderThickness="0" Height="30" FontSize="14" Text=""  VerticalAlignment="Top" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+
+                                <Border   CornerRadius="10" Width="100" Height="100" Margin="10,20,0,0" Background="#BFE2FF" BorderThickness="0" BorderBrush="#337ab7">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Schedule 06:" x:Name="Schedule_6_head" FontFamily="Arial Rounded MT Bold" FontSize="12" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="Hand" x:Name="Schedule_6_date" TextWrapping="Wrap" Width="90" BorderThickness="0" Height="30" FontSize="14" Text=""  VerticalAlignment="Top" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                                <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="Hand" x:Name="Schedule_6_time" TextWrapping="Wrap" Width="90" BorderThickness="0" Height="30" FontSize="14" Text=""  VerticalAlignment="Top" Foreground="#000" FontWeight="SemiBold"  TextAlignment="Center" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+
+
+
+                            </StackPanel>
+
+
+
+                        </StackPanel>
+
+
+
+
+
+                    </StackPanel>
+                    <StackPanel  Margin="60,0,0,0"  Orientation="Vertical">
+
+                        <TextBlock  Text="Cancel Schedule" FontFamily="Arial Rounded MT Bold" FontSize="16" Foreground="#337ab7" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                        <Border  Margin="0,10,0,0" BorderBrush="#c2c3c3" BorderThickness="1" CornerRadius="15" HorizontalAlignment="Left" Width="800" Height="270">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <StackPanel  Orientation="Horizontal"  Margin="20,15,0,0" >
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0" Width="175">
+                                        <Grid >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="75"/>
+                                                <RowDefinition Height="75"/>
+
+                                            </Grid.RowDefinitions>
+
+                                            <Grid Grid.Row="0">
+                                                <TextBlock Text="Schedule Date" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,21,0,20.6" FontSize="18" FontWeight="ExtraLight"/>
+
+                                            </Grid>
+                                            <Grid Grid.Row="1">
+                                                <TextBlock Text="Your Schedule" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0" FontSize="18" FontWeight="ExtraLight"/>
+                                            </Grid>
+
+
+
+
+
+                                        </Grid>
+
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Margin="-50,0,0,0" HorizontalAlignment="Right" Width="300" VerticalAlignment="Center">
+                                        <Grid >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="75"/>
+                                                <RowDefinition Height="75"/>
+
+                                            </Grid.RowDefinitions>
+
+                                            <Grid Grid.Row="0">
+
+                                                <DatePicker Padding="10,0,0,0"  FontWeight="SemiBold" IsTodayHighlighted="True"  x:Name="doctor_cancel_date_picker" materialDesign:HintAssist.Hint="Schedule date"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="280" Height="30" BorderBrush="#C2C3C3" BorderThickness="1" SelectedDateFormat="Short" DisplayDateStart="1922-03-20" PreviewMouseLeftButtonDown="doctor_cancel_date_picker_PreviewMouseLeftButtonDown" SelectedDateChanged="doctor_cancel_date_picker_SelectedDateChanged"   />
+
+
+                                            </Grid>
+                                            <Grid Grid.Row="1">
+                                                <StackPanel x:Name="error_date_picker_cancel"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-10,0,0" Width="280" Height="18">
+                                                    <Rectangle  Fill="#ff3333" Width="5" />
+
+                                                    <TextBlock x:Name="txt_error_date_pecker_cancel" Background="#fce5cd" VerticalAlignment="Top" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,0"   HorizontalAlignment="Center"/>
+                                                </StackPanel>
+                                                <ComboBox Background="Transparent" Cursor="Hand"  x:Name="cmb_shedle" Width="280" FontSize="14"
+                          materialDesign:HintAssist.Hint="Time slots" BorderThickness="1"  FontWeight="SemiBold"
+                          BorderBrush="#C2C3C3" Style="{StaticResource MaterialDesignOutlinedComboBox}" PreviewMouseLeftButtonDown="cmb_shedle_PreviewMouseLeftButtonDown"  />
+                                            </Grid>
+
+
+
+                                        </Grid>
+                                        <StackPanel x:Name="error_cmb_schedule"  Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-10,0,0" Width="280" Height="18">
+                                            <Rectangle  Fill="#ff3333" Width="5" />
+
+                                            <TextBlock x:Name="txt_error_cmb_schedule" Background="#fce5cd" VerticalAlignment="Top" Width="315"  Text="" FontSize="12" Foreground="#ff3333" Padding="10,0"   HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+
+
+                                    <Button  BorderThickness="1" VerticalAlignment="Bottom" BorderBrush="#c2c3c3" Background="Transparent" Margin="20,0,0,70 " x:Name="btn_delete" Foreground="#336ab7" Style="{StaticResource MaterialDesignFlatButton}" FontFamily="Arial Rounded MT Bold" materialDesign:ShadowAssist.ShadowDepth="Depth4" Height="40" Width="250"
+                        materialDesign:ButtonAssist.CornerRadius="10" FontSize="16" Content="Delete" Click="btn_delete_Click"/>
+
+
+
+
+
+
+
+                                </StackPanel>
+
+
+
+
+
+
+                            </StackPanel>
+
+                        </Border>
+
+
+
+
+                    </StackPanel>
+                    
+
+
+                </StackPanel>
+                
+            </Grid>
+
+
+            <Grid Grid.Column="2">
+                <StackPanel Orientation="Vertical" Margin="0,62,0,0">
+
+                    <materialDesign:DialogHost CloseOnClickAway="True" x:Name="DialogHost" >
+                        <materialDesign:PopupBox  Foreground="#337ab7" HorizontalAlignment="Right" Margin="0 20 20 0"
+                 PlacementMode="BottomAndAlignRightEdges" StaysOpen="False"
+                 Height="25">
+                            <StackPanel Width="125">
+                                <Button x:Name="btn_exit" ToolTip="Shut down Application" Margin="0 4 0 0" Content="Exit  Application" Click="btn_exit_Click"/>
+                                <Button x:Name="btn_logout" ToolTip="Logout Application" Content="Logout" Click="btn_logout_Click" />
+
+                            </StackPanel>
+
+                        </materialDesign:PopupBox>
+                    </materialDesign:DialogHost>
+
+                    <Border  CornerRadius="20" Width="270" Height="150" Background="Transparent" BorderThickness="1" BorderBrush="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Next Schedule" FontFamily="Arial Rounded MT Bold" FontSize="16" Foreground="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBox CaretBrush="Red"  IsReadOnly="True"   Cursor="IBeam" x:Name="txt_schedule_next" TextWrapping="Wrap" Width="260" BorderThickness="0" Height="65" FontSize="36"   VerticalAlignment="Center" Foreground="red" FontWeight="Bold"  TextAlignment="Center" Text="15.00pm" Margin="0,-5,0,0" Grid.Row="1" />
+                        </Grid>
+                    </Border>
+
+
+
+
+
+                    <Border  CornerRadius="20" Width="270" Height="200" Background="Transparent" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0">
+                        <StackPanel Orientation="Vertical" Margin="10,0,0,0" VerticalAlignment="Center">
+                            <TextBlock Text="Time Slots" Margin="0,0,0,10" FontFamily="Arial Rounded MT Bold" FontSize="15" Foreground="#337ab7" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0" Width="95">
+                                    <Grid >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="35"/>
+                                            <RowDefinition Height="35"/>
+                                            <RowDefinition Height="35"/>
+                                            <RowDefinition Height="35"/>
+
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0">
+                                            <TextBlock Text="Slot 01:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <TextBlock Text="Slot 02:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                        </Grid>
+                                        <Grid Grid.Row="2">
+                                            <TextBlock Text="Slot 03:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                        </Grid>
+                                        <Grid Grid.Row="3">
+                                            <TextBlock Text="Slot 04:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="13" FontWeight="ExtraLight"/>
+                                        </Grid>
+
+                                    </Grid>
+
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="150" Margin="-25,0,0,0" VerticalAlignment="Center">
+                                    <Grid >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="35"/>
+                                            <RowDefinition Height="35"/>
+                                            <RowDefinition Height="35"/>
+                                            <RowDefinition Height="35"/>
+
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0">
+                                            <TextBox Padding="10,0,0,0" Text="07.00am - 10.00am" IsReadOnly="True" FontWeight="SemiBold"   BorderThickness="0,0,0,1"   BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="130" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+
+
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <TextBox Padding="10,0,0,0" Text="11.00am - 14.00pm" IsReadOnly="True" FontWeight="SemiBold"  BorderThickness="0,0,0,1"   BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="130" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+                                        </Grid>
+                                        <Grid Grid.Row="2">
+                                            <TextBox Padding="10,0,0,0" Text="15.00pm - 18.00pm" IsReadOnly="True" FontWeight="SemiBold"   BorderThickness="0,0,0,1"   BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="130" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+
+                                        </Grid>
+                                        <Grid Grid.Row="3">
+                                            <TextBox Padding="10,0,0,0" Text="19.00pm - 22.00pm" IsReadOnly="True" FontWeight="SemiBold"   BorderThickness="0,0,0,1"   BorderBrush="#C2C3C3" FontSize="12" Height="30" Width="130" VerticalContentAlignment="Center" HorizontalAlignment="Center" Cursor="IBeam"/>
+                                        </Grid>
+
+                                    </Grid>
+
+
+                                </StackPanel>
+
+
+
+                            </StackPanel>
+
+
+                        </StackPanel>
+                    </Border>
+                    <Border  CornerRadius="20" Width="270" Height="280" Background="Transparent" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" HorizontalAlignment="Center" Margin="0,15,0,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Calendar  Margin="0,0,0,-220" materialDesign:CalendarAssist.IsHeaderVisible="False"  VerticalAlignment="Bottom" Width="250" Height="260" HorizontalAlignment="Center"   Background="Transparent" SelectionMode="MultipleRange" x:Name="calender" DisplayDateStart="2000/01/01"  DisplayDate="" />
+
+                        </Grid>
+
+
+
+                    </Border>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </StackPanel>
+
+            </Grid>
+
+        </Grid>
+    </Border>
+</Window>

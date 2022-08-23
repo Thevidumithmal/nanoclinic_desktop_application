@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C341B200-3816-4A00-A0E5-3286981C2F58}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NanoClinic</RootNamespace>
+    <AssemblyName>NanoClinicc</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>H:\Latest Project\2022-04-21 Start\</PublishUrl>
+    <Install>false</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>Software</ProductName>
+    <PublisherName>Nanoclinic</PublisherName>
+    <SuiteName>Patient Management System</SuiteName>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>3DEF4AE2805584B18E5807AA3EB6E0FCF51BF15A</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>NanoClinic_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=2.0.1.2556, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.2.0.1\lib\net452\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=4.1.0.2556, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.4.1.0\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Primitives.4.3.0\lib\net45\System.Drawing.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Controller.cs" />
+    <Compile Include="form_doctorUpdateProfile.xaml.cs">
+      <DependentUpon>form_doctorUpdateProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_FrontPage.xaml.cs">
+      <DependentUpon>form_FrontPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_MedicalStaffUpdateProfile.xaml.cs">
+      <DependentUpon>form_MedicalStaffUpdateProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_PatientUpdateProfile_GurdianInfo.xaml.cs">
+      <DependentUpon>form_PatientUpdateProfile_GurdianInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_PatientUpdateProfile_PatinetInfo.xaml.cs">
+      <DependentUpon>form_PatientUpdateProfile_PatinetInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_patient_click_doctor_info.xaml.cs">
+      <DependentUpon>form_patient_click_doctor_info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.cs" />
+    <Compile Include="Validation.cs" />
+    <Page Include="customcontrols\Folders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="customcontrols\MenuButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_AdminDashBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_AdminDoctors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_AdminMedicalAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_AdminProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_DoctorAppointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_DoctorDashBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_DoctorPatients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_DoctorProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_DoctorRegistration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_DoctorReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_DoctorSchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_doctorUpdateProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_FrontPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_MedicalAdminAppointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_MedicalAdminDashBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_MedicalAdminDoctors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_MedicalAdminPatient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_MedicalAdminProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_MedicalAdminRegistration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_MedicalStaffUpdateProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_PatientAppointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_PatientHealth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_PatientMakeAppointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_PatientProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_PatientDashBoard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="customcontrols\Folders.xaml.cs">
+      <DependentUpon>Folders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="customcontrols\MenuButton.xaml.cs">
+      <DependentUpon>MenuButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataBaseConnection.cs" />
+    <Compile Include="form_AdminDashBoard.xaml.cs">
+      <DependentUpon>form_AdminDashBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_AdminDoctors.xaml.cs">
+      <DependentUpon>form_AdminDoctors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_AdminMedicalAdmin.xaml.cs">
+      <DependentUpon>form_AdminMedicalAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_AdminProfile.xaml.cs">
+      <DependentUpon>form_AdminProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_DoctorAppointments.xaml.cs">
+      <DependentUpon>form_DoctorAppointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_DoctorDashBoard.xaml.cs">
+      <DependentUpon>form_DoctorDashBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_DoctorPatients.xaml.cs">
+      <DependentUpon>form_DoctorPatients.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_DoctorProfile.xaml.cs">
+      <DependentUpon>form_DoctorProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_DoctorRegistration.xaml.cs">
+      <DependentUpon>form_DoctorRegistration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_DoctorReports.xaml.cs">
+      <DependentUpon>form_DoctorReports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_DoctorSchedule.xaml.cs">
+      <DependentUpon>form_DoctorSchedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_Login.xaml.cs">
+      <DependentUpon>form_Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_MedicalAdminAppointments.xaml.cs">
+      <DependentUpon>form_MedicalAdminAppointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_MedicalAdminDashBoard.xaml.cs">
+      <DependentUpon>form_MedicalAdminDashBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_MedicalAdminDoctors.xaml.cs">
+      <DependentUpon>form_MedicalAdminDoctors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_MedicalAdminPatient.xaml.cs">
+      <DependentUpon>form_MedicalAdminPatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_MedicalAdminProfile.xaml.cs">
+      <DependentUpon>form_MedicalAdminProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_MedicalAdminRegistration.xaml.cs">
+      <DependentUpon>form_MedicalAdminRegistration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_PatientAppointments.xaml.cs">
+      <DependentUpon>form_PatientAppointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_PatientHealth.xaml.cs">
+      <DependentUpon>form_PatientHealth.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_PatientMakeAppointments.xaml.cs">
+      <DependentUpon>form_PatientMakeAppointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_PatientProfile.xaml.cs">
+      <DependentUpon>form_PatientProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_PatientDashBoard.xaml.cs">
+      <DependentUpon>form_PatientDashBoard.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="form_PatientRegistration_1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_PatientRegistration_2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_PatientUpdateProfile_GurdianInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_PatientUpdateProfile_PatinetInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="form_patient_click_doctor_info.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="resources\icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="form_PatientRegistration_1.xaml.cs">
+      <DependentUpon>form_PatientRegistration_1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form_PatientRegistration_2.xaml.cs">
+      <DependentUpon>form_PatientRegistration_2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="NanoClinic_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\icon_profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\background_doctors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\manula.jpg" />
+    <Resource Include="assets\thevidu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\sunethi.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\loginback.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\Profile.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\AdminBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\medicaladmin_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\DoctorHeader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\Avg.png" />
+    <Resource Include="assets\Max.png" />
+    <Resource Include="assets\Min.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\appointments.png" />
+    <Resource Include="assets\schedules.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\medical_header.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\doc.png" />
+    <Resource Include="assets\nur.png" />
+    <Resource Include="assets\pat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\patientD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\profileform_extraimage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\extraprofileformimage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\total.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\front.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\admin.jpg" />
+    <Resource Include="assets\doc4.jpg" />
+    <Resource Include="assets\doc5.jpg" />
+    <Resource Include="assets\nurse.jpg" />
+    <Resource Include="assets\patient.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets'))" />
+  </Target>
+</Project>
